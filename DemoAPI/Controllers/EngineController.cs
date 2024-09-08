@@ -34,7 +34,7 @@ namespace DemoAPI.Controllers
                     character.Id = characterID;
 
                     ConfigModel configuration = _config.GetConfig(); 
-                    if (configuration.Mass_Unit == "English")
+                    if (string.Equals(configuration.Mass_Unit,"English",StringComparison.OrdinalIgnoreCase))
                     {
                         //kg to lb conversion
                         character.Mass = character.Mass * 2.2;
