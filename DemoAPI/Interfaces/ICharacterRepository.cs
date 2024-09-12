@@ -4,7 +4,7 @@ namespace DemoAPI.Interfaces
 {
     public interface ICharacterRepository
     {
-        public bool PostCharacterToDB(CharacterModel model);
+        public int PostCharacterToDB(CharacterModel model);
     }
 }
     

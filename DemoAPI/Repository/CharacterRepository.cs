@@ -8,10 +8,11 @@ namespace DemoAPI.Repository
     public class CharacterRepository : ICharacterRepository
     {
 
-        public bool PostCharacterToDB(CharacterModel character)
+        public int PostCharacterToDB(CharacterModel character)
         {
             try
             {
+                int rowsUploaded = 0;
                 using (var connection = new SqlConnection("Data Source=LAPTOP-88E4JEB2\\SQLEXPRESS;Initial Catalog=DemoAPI;User ID=sa;Password=admin;Persist Security Info=True;"))
                 {
                     // Open the database connection
@@ -40,13 +41,11 @@ namespace DemoAPI.Repository
                     };
 
                     // Execute the insert query with the character data
-                    connection.Execute(insertQuery, parameters);
-
+                    rowsUploaded = connection.Execute(insertQuery, parameters);
                     connection.Close();
-
                 }
 
-                return true;
+                return rowsUploaded;
             }
             catch (Exception ex)
             {

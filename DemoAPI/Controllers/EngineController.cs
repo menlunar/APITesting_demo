@@ -11,6 +11,7 @@ namespace DemoAPI.Controllers
         private readonly ICharacterRepository _characterRepository;
         private readonly IConfigRepository _config;
 
+        //Dependency Injections
         public EngineController(ICharacterAPI characterAPI, ICharacterRepository characterRepository, IConfigRepository config)
         {
             _characterAPI = characterAPI;
@@ -26,7 +27,7 @@ namespace DemoAPI.Controllers
             {
                 //call API to get data
                 var jsonResponse = _characterAPI.GetCharacterFromAPI(characterID);
-                bool characterPopulated = false;
+                int characterPopulated = 0;
                 if (jsonResponse != null)
                 {
                     //Map characters to Model
@@ -39,17 +40,15 @@ namespace DemoAPI.Controllers
                         //kg to lb conversion
                         character.Mass = character.Mass * 2.2;
                     }
-
                     //Sync model to DB
                     characterPopulated = _characterRepository.PostCharacterToDB(character);
                 }
                 else
                 {
                     return NotFound("Character not found in API.");
-
                 }
 
-                if (characterPopulated)
+                if (characterPopulated > 0)
                 {
                     return Ok("Character successfully populated.");
                 }
