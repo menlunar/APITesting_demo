@@ -38,7 +38,7 @@ namespace DemoAPI.Controllers
                     if (string.Equals(configuration.Mass_Unit,"English",StringComparison.OrdinalIgnoreCase))
                     {
                         //kg to lb conversion
-                        character.Mass = character.Mass * 2.2;
+                        character.Mass = character.Mass * 3;
                     }
                     //Sync model to DB
                     characterPopulated = _characterRepository.PostCharacterToDB(character);
