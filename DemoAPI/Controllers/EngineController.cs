@@ -38,14 +38,14 @@ namespace DemoAPI.Controllers
                     if (string.Equals(configuration.Mass_Unit,"English",StringComparison.OrdinalIgnoreCase))
                     {
                         //kg to lb conversion
-                        character.Mass = character.Mass * 3;
+                        character.Mass = character.Mass * 2.2;
                     }
                     //Sync model to DB
                     characterPopulated = _characterRepository.PostCharacterToDB(character);
                 }
                 else
                 {
-                    return NotFound("Character not found in API.");
+                    return NotFound("Character was not found in API.");
                 }
 
                 if (characterPopulated > 0)
