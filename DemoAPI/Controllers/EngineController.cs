@@ -45,7 +45,7 @@ namespace DemoAPI.Controllers
                 }
                 else
                 {
-                    return NotFound("Character not found in API.");
+                    return NotFound("Character was not found in API.");
                 }
 
                 if (characterPopulated > 0)
